@@ -16,11 +16,11 @@ type calcAddons struct {
 
 // VisitFoAccount добавляем новый метод
 func (a *calcAddons) VisitFoAccount(l account.Accounter) (err error) {
-	fmt.Println("Добавили денег на кашелек (новый метод):", a.money)
+	fmt.Println("Добавили денег на кошелек (новый метод):", a.money)
 	return
 }
 
-// NewArray visitor factory
+// NewVisitor visitor factory
 func NewVisitor(money int) Visitor {
 	return &calcAddons{
 		money,
