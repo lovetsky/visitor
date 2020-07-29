@@ -32,7 +32,7 @@ func (l *account) Accept(v visitor.Visitor) (err error) {
 	return v.VisitFoAccount(l)
 }
 
-// NewList creates an instance of the List
+// NewAccount creates an instance of the Account
 func NewAccount() Accounter {
 	return &account{
 		uid:     "user1",
