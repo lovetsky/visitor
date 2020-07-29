@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	f := addons.NewCalcProduct(10)
+	f := addons.NewVisitor(10)
 	a := account.NewAccount("user1", f)
 	a.Reserved("user1")
 	a.Accept(f)

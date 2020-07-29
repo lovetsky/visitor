@@ -27,7 +27,7 @@ func (c *calcProduct) VisitFoAccount(a int) {
 }
 
 // NewAccount создает реализацию интерефейса accounter
-func NewCalcProduct(count int) Visiter {
+func NewVisitor(count int) Visiter {
 	return &calcProduct{
 		count: count,
 	}
