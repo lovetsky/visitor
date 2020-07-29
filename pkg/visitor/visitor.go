@@ -20,7 +20,7 @@ func (a *calcAddons) VisitFoAccount(l account.Accounter) (err error) {
 	return
 }
 
-// NewVisitor visitor factory
+// NewVisitor фабрика визитора
 func NewVisitor(money int) Visitor {
 	return &calcAddons{
 		money,
