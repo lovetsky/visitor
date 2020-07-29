@@ -2,13 +2,15 @@ package addons
 
 import (
 	"fmt"
+
 	"github.com/labstack/gommon/color"
 )
 
 var done = color.Green("[ OK ]")
 
-type calcProduct struct {
-	count int
+type accounter interface {
+	Reserved(uidAccount string) (status bool)
+	Accept(v Visiter)
 }
 
 // Интерфейс визитора реализующий функции для account
@@ -16,9 +18,8 @@ type Visiter interface {
 	VisitFoAccount(int2 int)
 }
 
-type accounter interface {
-	Reserved(uidAccount string) (status bool)
-	Accept(v Visiter)
+type calcProduct struct {
+	count int
 }
 
 // VisitFoAccount реализует вызов для объекта количества товара
