@@ -2,12 +2,15 @@ package visitor
 
 import (
 	"fmt"
-	"github.com/lovetsky/visitor/pkg/account"
 )
+
+type VisitorAccepter interface {
+	Accept(v Visitor) (err error)
+}
 
 // Visitor обеспечивает интерфейс покупателя
 type Visitor interface {
-	VisitFoAccount(l account.Accounter) (err error)
+	VisitFoAccount(l VisitorAccepter) (err error)
 }
 
 type calcAddons struct {
@@ -15,7 +18,7 @@ type calcAddons struct {
 }
 
 // VisitFoAccount добавляем новый метод
-func (a *calcAddons) VisitFoAccount(l account.Accounter) (err error) {
+func (a *calcAddons) VisitFoAccount(l VisitorAccepter) (err error) {
 	fmt.Println("Добавили денег на кошелек (новый метод):", a.money)
 	return
 }

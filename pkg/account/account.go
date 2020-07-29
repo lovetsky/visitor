@@ -1,15 +1,14 @@
 package account
 
-import "fmt"
-
-type visitor interface {
-	VisitFoAccount(l Accounter) (err error)
-}
+import (
+	"fmt"
+	"github.com/lovetsky/visitor/pkg/visitor"
+)
 
 // Accounter интерфейс покупателя
 type Accounter interface {
 	Check(uidAccount string) (status bool)
-	Accept(v visitor) (err error)
+	Accept(v visitor.Visitor) (err error)
 }
 
 type account struct {
@@ -29,7 +28,7 @@ func (a *account) Check(uidAccount string) (status bool) {
 }
 
 // Accept accepts the visitor
-func (l *account) Accept(v visitor) (err error) {
+func (l *account) Accept(v visitor.Visitor) (err error) {
 	return v.VisitFoAccount(l)
 }
 
