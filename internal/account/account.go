@@ -6,9 +6,6 @@ import (
 	"github.com/labstack/gommon/color"
 )
 
-var done = color.Green("[ OK ]")
-var fail = color.Red("[Fail]")
-
 type visiter interface {
 	VisitFoAccount(int int)
 }
@@ -26,6 +23,7 @@ type account struct {
 
 // Reserved реализует метод резервирования товара покупателем
 func (a *account) Reserved(uidAccount string) (status bool) {
+	done := color.Green("[ OK ]")
 	fmt.Println(done, " Товар был зарезервирован для покупателя: ", uidAccount)
 	return true
 }
@@ -36,7 +34,7 @@ func (a *account) Accept(v visiter) {
 }
 
 // NewAccount создает реализацию интерефейса accounter
-func NewAccount(uidAccount string, visiter visiter) *account {
+func NewAccount(uidAccount string, visiter visiter) accounter {
 	return &account{
 		uid:     uidAccount,
 		balance: 100,

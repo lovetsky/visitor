@@ -6,8 +6,6 @@ import (
 	"github.com/labstack/gommon/color"
 )
 
-var done = color.Green("[ OK ]")
-
 type accounter interface {
 	Reserved(uidAccount string) (status bool)
 	Accept(v Visiter)
@@ -24,6 +22,7 @@ type calcProduct struct {
 
 // VisitFoAccount реализует вызов для объекта количества товара
 func (c *calcProduct) VisitFoAccount(a int) {
+	done := color.Green("[ OK ]")
 	fmt.Println(done, " Добавлено товаров (новый метод): ", c.count)
 }
 
